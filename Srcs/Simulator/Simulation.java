@@ -12,11 +12,19 @@ import Srcs.Aircrafts.AircraftFactory;
 
 //Parse the scenario
 public class Simulation {
-    ArrayList<Flyable> flyables = new ArrayList<Flyable>();
-    int nbOfLoop;
+    /***********************************************/
+    /*                Class members                */
+    /***********************************************/
+
+    private static ArrayList<Flyable> flyables = new ArrayList<Flyable>();
+    private static int nbOfLoop;
+
+    /***********************************************/
+    /*              Parsing methods                */
+    /***********************************************/
 
     //Check if the file exist and store the lines in a List.
-    private List<String> readScenarioLines(String path) throws ScenarioException {
+    private static List<String> readScenario(String path) throws ScenarioException {
         //Check if the file exist and read
         Path pathToScenario = Path.of(path);
         List<String> lines;
@@ -32,31 +40,32 @@ public class Simulation {
     }
 
     //Parse the number of times the simulation must change the weather for every Aircraft.
-    private int retrieveNbOfLoop(Iterator<String> it) throws ScenarioException {
-        int nbOfLoop = 0;
+    private static int retrieveNbOfLoop(String line) throws ScenarioException {
+        nbOfLoop = 0;
         try {
-            nbOfLoop = Integer.parseInt(it.toString());
+            nbOfLoop = Integer.parseInt(line);
             //Throw and error if the number is negative or 0
             if (nbOfLoop <= 0)
                 throw new ScenarioException("The first line should be a positive integer");
         }
         catch (NumberFormatException e) {
             //Throw an error if the first line is not a number
-            throw new ScenarioException("The first line should be a positive integer");
+            throw new ScenarioException("The first line should be an integer");
         }
-        //it.next();
+
         return (nbOfLoop);
     }
 
-    private Flyable parseAircraftLine(String line) throws ScenarioException {
+    private static Flyable parseAircraftLine(String line) throws ScenarioException {
         String[] lineTokens = line.split(" ");
         //Throw an error if the line dont respect the format TYPE NAME LONGITUDE LATITUDE HEIGHT
         if (lineTokens.length != 5)
-            throw new ScenarioException("Bad syntax: Aircrafts should respect this format: TYPE NAME LONGITUDE LATITUDE HEIGHT");
+            throw new ScenarioException("Bad syntax: Respect this format: TYPE NAME LONGITUDE LATITUDE HEIGHT");
+
         //Retrieve the type of the Aircraft
         String type = lineTokens[0];
         //Throw error if the TYPE is not a Baloon, Helicopter or JetPlane.
-        if (lineTokens[0] != "Baloon" && lineTokens[0] != "Helicopter" && lineTokens[0] != "JetPlane")
+        if (!(lineTokens[0].equals("Baloon") || lineTokens[0].equals("Helicopter") || lineTokens[0].equals("JetPlane")))
             throw new ScenarioException("The Aircraft's type should be Baloon, Helicopter or JetPlane");
         //Retrieve the name of the Aircraft
         String name = lineTokens[1];
@@ -79,19 +88,45 @@ public class Simulation {
     }
 
     //Parse the scenario and throw exceptions in case of errors.
-    public void parseScenario(String path) throws ScenarioException {
-        List<String> lines = this.readScenarioLines(path);
+    private static void parseScenario(String path) throws ScenarioException {
+        List<String> lines = readScenario(path);
         Iterator<String> it = lines.iterator();
 
-        this.nbOfLoop = this.retrieveNbOfLoop(it);
-        it.next();
+        //Retrieve number of loop the simulation has to do
+        nbOfLoop = retrieveNbOfLoop(it.next());
+
         //Parse every lines and fill the Flyable Array
         while (it.hasNext()) {
-            Flyable newAircraft = this.parseAircraftLine(it.toString());
-            this.flyables.add(newAircraft);
+            String line = it.next();
 
-            //Incrementing the iterator
-            it.next();
+            Flyable newAircraft = parseAircraftLine(line);
+            flyables.add(newAircraft);
         }
+    }
+
+    /***********************************************/
+    /*            Simulation methods               */
+    /***********************************************/
+
+
+
+    //Run the simulation
+    public static void main(String[] args) throws ScenarioException {
+        //Check args
+        if (args.length != 1)
+			return;
+
+        //Parse scenario and fill they Flyable Array
+        parseScenario(args[0]);
+
+        //DEBUG
+        System.out.println("flyables.length = " + flyables.size());
+        Iterator<Flyable> it = flyables.iterator();
+        //while (it.hasNext()) {
+        //    Flyable elem = it.next();
+        //    System.out.println(elem.type);
+        //}
+
+        //Simulation functions
     }
 }
