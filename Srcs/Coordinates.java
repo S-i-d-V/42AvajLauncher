@@ -17,16 +17,16 @@ public class Coordinates {
 	
     //Longitude getter
 	public int getLongitude() {
-		return this.longitude;
+		return (this.longitude);
 	}
 
     //Latitude getter
 	public int getLatitude() {
-		return this.latitude;
+		return (this.latitude);
 	}
 
     //Height getter
 	public int getHeight() {
-		return this.height;
+		return (this.height);
 	}
 }
