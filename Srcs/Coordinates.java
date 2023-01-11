@@ -1,5 +1,6 @@
 package Srcs;
 
+//Class that store coordinates
 public class Coordinates {
 	private int longitude;
 	private int latitude;

@@ -1,5 +1,6 @@
 package Srcs.Tower;
 
+//Imports
 import Srcs.Coordinates;
 import Srcs.WeatherProvider;
 
@@ -11,6 +12,7 @@ public class WeatherTower extends Tower {
 	}
 
     // ?
+    //This method should be private according to the UML Diagram, but it is not possible.
 	public void changeWeather() {
 		System.out.println("Change weather");
 	}

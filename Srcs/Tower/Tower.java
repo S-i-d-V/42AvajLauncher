@@ -2,7 +2,6 @@ package Srcs.Tower;
 
 //Imports
 import java.util.ArrayList;
-import Srcs.Coordinates;
 import Srcs.Aircrafts.Flyable;
 
 //No constructor in the UML Diagram means this class is abstract

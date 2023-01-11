@@ -10,6 +10,8 @@ public class Baloon extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
 
     //Constructor
+    //This method should be private according to the UML Diagram, but it is not possible.
+    //Baloon must be instancied by the AircraftFactory class
     public Baloon(String name, Coordinates coordinates){
         //Construct the parent class
         super(name, coordinates);
