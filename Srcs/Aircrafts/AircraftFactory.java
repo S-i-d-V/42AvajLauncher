@@ -17,7 +17,7 @@ public abstract class AircraftFactory {
             return (new Helicopter(name, coordinates));
         else if (type == "JetPlane")
             return (new JetPlane(name, coordinates));
-        //In this case, i have to catch an exception
+        //In case this method reutrn null, i have to throw an exception
         else
             return (null);
     }
