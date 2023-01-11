@@ -16,6 +16,9 @@ of the simulation.
 ## Given UML Diagram:
 ![Screenshot](avaj_uml.png)
 
+## Expected output:
+![Screenshot](expected_output.png)
+
 ## How to understand UML Diagram ?
 ### Access modifiers symbols meanings :
 
