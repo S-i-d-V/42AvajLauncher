@@ -1,4 +1,20 @@
-# UML Diagram:
+# 42AvajLauncher:
+## General instructions:
+You need to implement an aircraft simulation program based on the class diagram pro-
+vided to you. All classes are required to be implemented respecting every detail provided
+in the diagram. Feel free to add more classes or include additional attributes if you think
+it is necessary, but do not change access modifiers or the class hierarchy for the classes
+provided in the diagram.
+
+## Program behaviour:
+Your program will take one and only one argument from the command line. This argu-
+ment represents the name of a text file that will contain the scenario that needs to be
+simulated. You can find an example file provided with the subject.
+Executing the program will generate a file simulation.txt that describes the outcome
+of the simulation.
+
+## Given UML Diagram:
+![Screenshot](avaj_uml.png)
 
 ## How to understand UML Diagram ?
 ### Access modifiers symbols meanings :
@@ -19,14 +35,3 @@
     Relationship in which an element uses another element.
 ◆: Composition
     Relationship in which the life cycles of the elements and the aggregate are linked: if the aggregate is destroyed, so are its components.
-
-## How to compile use ?
-
-### Compile the project
-```make```
-### Delete class files only
-```make clean```
-### Delete class files and binary
-```make fclean```
-### Rebuild the project
-```make re```
