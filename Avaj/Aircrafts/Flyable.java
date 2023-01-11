@@ -1,7 +1,7 @@
-package Srcs.Aircrafts;
+package Avaj.Aircrafts;
 
 //Imports
-import Srcs.Tower.WeatherTower;
+import Avaj.Tower.WeatherTower;
 
 //Interface shared by Aircrafts (Baloon, Helicopter, JetPlanes)
 //Every methods will be defined by class that implement it.

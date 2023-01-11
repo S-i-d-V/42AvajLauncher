@@ -1,4 +1,4 @@
-package Srcs.Simulator;
+package Avaj.Simulator;
 
 //Imports
 import java.nio.file.Files;
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Srcs.Aircrafts.Flyable;
-import Srcs.Aircrafts.AircraftFactory;
+import Avaj.Aircrafts.Flyable;
+import Avaj.Aircrafts.AircraftFactory;
 
 //Parse the scenario
 public class Simulation {

@@ -1,23 +1,23 @@
-package Srcs.Aircrafts;
+package Avaj.Aircrafts;
 
 //Imports
-import Srcs.Coordinates;
-import Srcs.Tower.WeatherTower;
+import Avaj.Coordinates;
+import Avaj.Tower.WeatherTower;
 
 //This class inherits from the Aircraft class
 //And implement the interface Flyable
-public class JetPlane extends Aircraft implements Flyable {
+public class Baloon extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
 
     //Constructor
     //This method should be private according to the UML Diagram, but it is not possible.
-    //JetPlane must be instancied by the AircraftFactory class
-    public JetPlane(String name, Coordinates coordinates){
+    //Baloon must be instancied by the AircraftFactory class
+    public Baloon(String name, Coordinates coordinates){
         //Construct the parent class
         super(name, coordinates);
     }
 
-    //Update conditions
+    //?
     public void updateConditions() {
         System.out.println("Update the weather conditions");
     }

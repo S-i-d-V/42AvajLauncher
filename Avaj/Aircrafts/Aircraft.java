@@ -1,7 +1,7 @@
-package Srcs.Aircrafts;
+package Avaj.Aircrafts;
 
 //Imports
-import Srcs.Coordinates;
+import Avaj.Coordinates;
 
 //Baloon/Helicopter/JetPlane's Parent class 
 public class Aircraft {

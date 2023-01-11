@@ -1,8 +1,8 @@
-package Srcs.Tower;
+package Avaj.Tower;
 
 //Imports
-import Srcs.Coordinates;
-import Srcs.WeatherProvider;
+import Avaj.Coordinates;
+import Avaj.WeatherProvider;
 
 //This class inherits from the Tower class
 public class WeatherTower extends Tower {

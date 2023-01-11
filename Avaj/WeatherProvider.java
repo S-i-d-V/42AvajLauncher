@@ -1,4 +1,4 @@
-package Srcs;
+package Avaj;
 
 //Generate the weather for the WeatherTower
 public class WeatherProvider {

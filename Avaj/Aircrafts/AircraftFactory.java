@@ -1,7 +1,7 @@
-package Srcs.Aircrafts;
+package Avaj.Aircrafts;
 
 //Imports
-import Srcs.Coordinates;
+import Avaj.Coordinates;
 
 //No constructor in the UML Diagram means this class is abstract
 //Create a new Aircraft (Baloon, Helicopter, JetPlane)

@@ -1,4 +1,4 @@
-package Srcs;
+package Avaj;
 
 //Class that store coordinates
 public class Coordinates {

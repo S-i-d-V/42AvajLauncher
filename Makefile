@@ -1,15 +1,15 @@
-SOURCES = Srcs/Aircrafts/Aircraft.java \
-		Srcs/Aircrafts/AircraftFactory.java \
-		Srcs/Aircrafts/Baloon.java \
-		Srcs/Aircrafts/Flyable.java \
-		Srcs/Aircrafts/Helicopter.java \
-		Srcs/Aircrafts/JetPlane.java \
-		Srcs/Tower/Tower.java \
-		Srcs/Tower/WeatherTower.java \
-		Srcs/Simulator/ScenarioException.java \
-		Srcs/Simulator/Simulation.java \
-		Srcs/Coordinates.java \
-		Srcs/WeatherProvider.java
+SOURCES = Avaj/Aircrafts/Aircraft.java \
+		Avaj/Aircrafts/AircraftFactory.java \
+		Avaj/Aircrafts/Baloon.java \
+		Avaj/Aircrafts/Flyable.java \
+		Avaj/Aircrafts/Helicopter.java \
+		Avaj/Aircrafts/JetPlane.java \
+		Avaj/Tower/Tower.java \
+		Avaj/Tower/WeatherTower.java \
+		Avaj/Simulator/ScenarioException.java \
+		Avaj/Simulator/Simulation.java \
+		Avaj/Coordinates.java \
+		Avaj/WeatherProvider.java
 
 
 all: $(SOURCES)

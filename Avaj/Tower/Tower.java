@@ -1,8 +1,8 @@
-package Srcs.Tower;
+package Avaj.Tower;
 
 //Imports
 import java.util.ArrayList;
-import Srcs.Aircrafts.Flyable;
+import Avaj.Aircrafts.Flyable;
 
 //No constructor in the UML Diagram means this class is abstract
 //WeatherTower's parent class
