@@ -11,13 +11,23 @@ public abstract class Tower {
 
     //Add the given flyable to the tower's Flyable list
 	public void register(Flyable flyable) {
-		if (!this.observers.contains(flyable))
+		if (!this.observers.contains(flyable)) {
 			this.observers.add(flyable);
+
+			//DEBUG
+			System.out.println("Tower says: " + "<name>" + " registred to weather tower.");
+		}
 	}
 
     //Delete the given flyable from the tower's Flyable list
 	public void unregister(Flyable flyable) {
-		this.observers.remove(observers.indexOf(flyable));
+		int indexToDel = observers.indexOf(flyable);
+		if (indexToDel != -1){
+			this.observers.remove(indexToDel);
+
+			//DEBUG
+			System.out.println("Tower says: " + "<name>" + " unregistred to weather tower.");
+		}
 	}
 
     // ?

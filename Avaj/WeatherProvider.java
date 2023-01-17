@@ -1,5 +1,7 @@
 package Avaj;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 //Generate the weather for the WeatherTower
@@ -23,9 +25,20 @@ public class WeatherProvider {
     //This method has to return a random weather for thoses coordinates
     //The coordinates have to be used to generate it
     public String getCurrentWeather(Coordinates coordinates){
-        Random random = new Random();
-        int randomNb = random.nextInt();
+        try {
+            //To generate a random weather from the 3D points, i hash the coordinates and nodulo the integer.
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] bytes = md.digest((coordinates.getLongitude() + ":" + coordinates.getLatitude() + ":" + coordinates.getHeight()).getBytes());
+            long hash = 0;
 
-        return (this.weather[randomNb % 4]);
+            for (int i = 0; i < 8; i++){
+                hash <<= 8;
+                hash |= (bytes[i] & 0xFF);
+            }
+            return (this.weather[(int)(hash % 4) % 4]);
+        }
+        catch (NoSuchAlgorithmException e) {
+            return ("INVALID WEATHER");
+        }
     }
 }
