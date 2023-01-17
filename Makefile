@@ -14,6 +14,7 @@ SOURCES = Avaj/Aircrafts/Aircraft.java \
 
 all: $(SOURCES)
 	javac $(SOURCES)
+	java Avaj.Simulator.Simulation scenario.txt
 
 clean:
 	find . -name "*.class" -type f -delete

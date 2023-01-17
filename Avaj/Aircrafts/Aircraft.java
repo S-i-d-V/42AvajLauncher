@@ -4,7 +4,8 @@ package Avaj.Aircrafts;
 import Avaj.Coordinates;
 
 //Baloon/Helicopter/JetPlane's Parent class 
-public class Aircraft {
+//This class is abstract because she's designed to be extended
+public abstract class Aircraft {
     protected       long        id;
     protected       String      name;
     protected       Coordinates coordinates;

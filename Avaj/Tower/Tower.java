@@ -4,7 +4,7 @@ package Avaj.Tower;
 import java.util.ArrayList;
 import Avaj.Aircrafts.Flyable;
 
-//No constructor in the UML Diagram means this class is abstract
+//No constructor in the UML Diagram means this class is abstract + she's designed to be extended
 //WeatherTower's parent class
 public abstract class Tower {
     private ArrayList<Flyable> observers = new ArrayList<Flyable>();

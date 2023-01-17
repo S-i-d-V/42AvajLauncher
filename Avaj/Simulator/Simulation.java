@@ -120,13 +120,17 @@ public class Simulation {
         parseScenario(args[0]);
 
         //DEBUG
+        System.out.println("nbOfLoop = " + nbOfLoop);
         System.out.println("flyables.length = " + flyables.size());
-        Iterator<Flyable> it = flyables.iterator();
+        //Iterator<Flyable> it = flyables.iterator();
         //while (it.hasNext()) {
         //    Flyable elem = it.next();
-        //    System.out.println(elem.type);
+        //    System.out.println("Flyable : " + elem);
         //}
 
-        //Simulation functions
+        //Simulation
+        for (int i = 0; i < nbOfLoop; i++){
+            System.out.println("Changes weather");
+        }
     }
 }
