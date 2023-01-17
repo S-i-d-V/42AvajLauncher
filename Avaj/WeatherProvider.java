@@ -2,7 +2,6 @@ package Avaj;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Random;
 
 //Generate the weather for the WeatherTower
 public class WeatherProvider {

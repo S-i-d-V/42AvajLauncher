@@ -30,8 +30,10 @@ public abstract class Tower {
 		}
 	}
 
-    // ?
+    // Update the weather for every Flyable in the list.
 	protected void conditionsChanged() {
-        System.out.println("Conditions changed");
+        for (int i = 0; i < observers.size(); i++) {
+			observers.get(i).updateConditions();
+		}
 	}
 }

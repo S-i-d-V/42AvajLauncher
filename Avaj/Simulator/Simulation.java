@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import Avaj.Aircrafts.Flyable;
+import Avaj.Tower.WeatherTower;
 import Avaj.Aircrafts.AircraftFactory;
 
 //Parse the scenario
@@ -119,18 +120,11 @@ public class Simulation {
         //Parse scenario and fill they Flyable Array
         parseScenario(args[0]);
 
-        //DEBUG
-        System.out.println("nbOfLoop = " + nbOfLoop);
-        System.out.println("flyables.length = " + flyables.size());
-        //Iterator<Flyable> it = flyables.iterator();
-        //while (it.hasNext()) {
-        //    Flyable elem = it.next();
-        //    System.out.println("Flyable : " + elem);
-        //}
-
         //Simulation
+        WeatherTower weatherTower = new WeatherTower();
+
         for (int i = 0; i < nbOfLoop; i++){
-            System.out.println("Changes weather");
+            weatherTower.changeWeather();
         }
     }
 }
