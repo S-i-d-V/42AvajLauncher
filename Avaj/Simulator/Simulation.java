@@ -85,24 +85,8 @@ public class Simulation {
             throw new ScenarioException("LONGITUDE LATITUDE HEIGHT should be integers");
         }
         //Create a new Flyable and return it
+
         return (AircraftFactory.newAircraft(type, name, longitude, latitude, height));
-    }
-
-    //Parse the scenario and throw exceptions in case of errors.
-    private static void parseScenario(String path) throws ScenarioException {
-        List<String> lines = readScenario(path);
-        Iterator<String> it = lines.iterator();
-
-        //Retrieve number of loop the simulation has to do
-        nbOfLoop = retrieveNbOfLoop(it.next());
-
-        //Parse every lines and fill the Flyable Array
-        while (it.hasNext()) {
-            String line = it.next();
-
-            Flyable newAircraft = parseAircraftLine(line);
-            flyables.add(newAircraft);
-        }
     }
 
     /***********************************************/
@@ -118,13 +102,22 @@ public class Simulation {
 			return;
 
         //Parse scenario and fill they Flyable Array
-        parseScenario(args[0]);
+        List<String> lines = readScenario(args[0]);
+        Iterator<String> it = lines.iterator();
+        WeatherTower weatherTower = new WeatherTower();
+        nbOfLoop = retrieveNbOfLoop(it.next());
+        
+        //Parse every lines and fill the Flyable Array
+        while (it.hasNext()) {
+            String line = it.next();
+
+            Flyable newAircraft = parseAircraftLine(line);
+            newAircraft.registerTower(weatherTower);
+            flyables.add(newAircraft);
+        }
 
         //Simulation
-        WeatherTower weatherTower = new WeatherTower();
-
-        for (int i = 0; i < nbOfLoop; i++){
+        for (int i = 0; i < nbOfLoop; i++)
             weatherTower.changeWeather();
-        }
     }
 }

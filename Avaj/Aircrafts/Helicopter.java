@@ -28,31 +28,46 @@ public class Helicopter extends Aircraft implements Flyable {
 
     //Update the coordinates due to weather
     public void updateConditions() {
+        System.out.println("Function (Helicopter) updateCondition()");
         String weather = weatherTower.getWeather(this.coordinates);
 
         //Longitude increase by 5 when RAIN
         if (weather == "RAIN"){
             this.coordinates = new Coordinates(this.coordinates.getLongitude() + 5, this.coordinates.getLatitude(), this.coordinates.getHeight());
+        
+            //DEBUG
+			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
         }
         //Longitude increase by 1 when FOG
         else if (weather == "FOG"){
             this.coordinates = new Coordinates(this.coordinates.getLongitude() + 5, this.coordinates.getLatitude(), this.coordinates.getHeight());
+        
+            //DEBUG
+			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
         }
         //Height increase by 2 & Longitude increase by 10 when SUN
         else if (weather == "SUN"){
-            //If the Helicopter is at a superior height than 98 meter, he can't reach higher.
             if (this.coordinates.getHeight() + 2 >= 100)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), 100);
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), this.coordinates.getHeight() + 2);
+        
+            //DEBUG
+			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
         }
         //Height decrease by 12 when SNOW
         else if (weather == "SNOW"){
             //If the height is inferior or equal to 12, the Helicopter land.
-            if (this.coordinates.getHeight() <= 12)
+            if (this.coordinates.getHeight() <= 12) {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
+                //Need to unregister from weatherTower
+                //Log current coordinates
+            }
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 12);
+        
+            //DEBUG
+			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
         }
         else
             System.out.println("INVALID");
