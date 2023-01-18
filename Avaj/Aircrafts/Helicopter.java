@@ -10,13 +10,7 @@ import java.util.HashMap;
 public class Helicopter extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
     //I use a map to easily retrieve weather communication of Aircraft.
-    private HashMap<String, String> weatherComm = new HashMap<>() {{
-        weatherComm = new HashMap<>();
-        weatherComm.put("RAIN", "It's raining day !");
-        weatherComm.put("FOG", "I can't see anything...");
-        weatherComm.put("SUN", "What good weather to fly !");
-        weatherComm.put("SNOW", "My engine is freezing !");
-    }};
+    private HashMap<String, String> weatherComm = new HashMap<>();
 
     //Constructor
     //This method should be private according to the UML Diagram, but it is not possible.
@@ -24,6 +18,11 @@ public class Helicopter extends Aircraft implements Flyable {
     public Helicopter(String name, Coordinates coordinates){
         //Construct the parent class
         super(name, coordinates);
+        //Fill my weather communication hashhMap
+        weatherComm.put("RAIN", "My propeller protects us from the rain !");
+        weatherComm.put("FOG", "I can't see anything...");
+        weatherComm.put("SUN", "A good flight is like a good coffee. WARM !");
+        weatherComm.put("SNOW", "Am I really flying in all this snow ?");
         //Assign the type in the parent class Aircraft for log communications.
         this.type = "Helicopter";
     }
@@ -37,14 +36,14 @@ public class Helicopter extends Aircraft implements Flyable {
             this.coordinates = new Coordinates(this.coordinates.getLongitude() + 5, this.coordinates.getLatitude(), this.coordinates.getHeight());
         
             //DEBUG
-			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         //Longitude increase by 1 when FOG
         else if (weather.equals("FOG")) {
             this.coordinates = new Coordinates(this.coordinates.getLongitude() + 5, this.coordinates.getLatitude(), this.coordinates.getHeight());
         
             //DEBUG
-			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         //Height increase by 2 & Longitude increase by 10 when SUN
         else if (weather.equals("SUN")) {
@@ -54,7 +53,7 @@ public class Helicopter extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), this.coordinates.getHeight() + 2);
         
             //DEBUG
-			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         //Height decrease by 12 when SNOW
         else if (weather.equals("SNOW")) {
@@ -68,7 +67,7 @@ public class Helicopter extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 12);
         
             //DEBUG
-			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         else
             System.out.println("INVALID");

@@ -11,11 +11,6 @@ public abstract class AircraftFactory {
         //Coordinates of the new Aircraft
         Coordinates coordinates = new Coordinates(longitude, latitude, height);
 
-        //DEBUG
-        //System.out.println("AircraftFactory");
-        //System.out.println("type = " + type);
-        //System.out.println(type.equals("Baloon"));
-
         if (type.equals("Baloon"))
             return (new Baloon(name, coordinates));
         else if (type.equals("Helicopter"))
