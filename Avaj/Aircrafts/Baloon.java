@@ -24,6 +24,8 @@ public class Baloon extends Aircraft implements Flyable {
     public Baloon(String name, Coordinates coordinates){
         //Construct the parent class
         super(name, coordinates);
+        //Assign the type in the parent class Aircraft for log communications.
+        this.type = "Baloon";
     }
 
     //Update the coordinates due to weather
@@ -31,7 +33,7 @@ public class Baloon extends Aircraft implements Flyable {
         String weather = weatherTower.getWeather(this.coordinates);
 
         //Height decrease by 5 when RAIN
-        if (weather == "RAIN"){
+        if (weather.equals("RAIN")) {
             //If the height is inferior to 5, the Baloon land.
             if (this.coordinates.getHeight() < 5)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
@@ -39,10 +41,10 @@ public class Baloon extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 5);
             
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         //Height decrease by 3 when FOG
-        else if (weather == "FOG"){
+        else if (weather.equals("FOG")) {
             //If the height is inferior to 3, the Baloon land.
             if (this.coordinates.getHeight() < 3)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
@@ -50,20 +52,20 @@ public class Baloon extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 3);
             
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         //Height increase by 4 & Longitude increase by 2 when SUN
-        else if (weather == "SUN"){
+        else if (weather.equals("SUN")) {
             if (this.coordinates.getHeight() + 4 >= 100)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2, this.coordinates.getLatitude(), 100);
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2, this.coordinates.getLatitude(), this.coordinates.getHeight() + 4);
         
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         //Height decrease by 15 when SNOW
-        else if (weather == "SNOW"){
+        else if (weather.equals("SNOW")) {
             //If the height is inferior or equal to 15, the Baloon land.
             if (this.coordinates.getHeight() <= 15) {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
@@ -74,7 +76,7 @@ public class Baloon extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 15);
         
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         else
             System.out.println("INVALID");

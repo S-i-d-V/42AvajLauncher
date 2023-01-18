@@ -15,7 +15,7 @@ public abstract class Tower {
 			this.observers.add(flyable);
 
 			//DEBUG
-			System.out.println("Tower says: " + "TYPE#NAME(UID)" + " registred to weather tower.");
+			System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " registered to weather tower.");
 		}
 	}
 
@@ -26,7 +26,7 @@ public abstract class Tower {
 			this.observers.remove(indexToDel);
 
 			//DEBUG
-			System.out.println("Tower says: " + "TYPE#NAME(UID)" + " unregistred to weather tower.");
+			System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " unregistered to weather tower.");
 		}
 	}
 
@@ -34,7 +34,7 @@ public abstract class Tower {
 	protected void conditionsChanged() {
 		//DEBUG
 		System.out.println("Function conditionsChanged() -> observers.size() = " + observers.size());
-		
+
         for (int i = 0; i < observers.size(); i++) {
 			observers.get(i).updateConditions();
 		}

@@ -24,6 +24,8 @@ public class JetPlane extends Aircraft implements Flyable {
     public JetPlane(String name, Coordinates coordinates){
         //Construct the parent class
         super(name, coordinates);
+        //Assign the type in the parent class Aircraft for log communications.
+        this.type = "JetPlane";
     }
 
     //Update the coordinates due to weather
@@ -31,31 +33,31 @@ public class JetPlane extends Aircraft implements Flyable {
         String weather = weatherTower.getWeather(this.coordinates);
 
         //Latitude increase by 5 when RAIN
-        if (weather == "RAIN"){
+        if (weather.equals("RAIN")) {
             this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude() + 5, this.coordinates.getHeight());
         
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         //Latitude increase by 1 when FOG
-        else if (weather == "FOG"){
+        else if (weather.equals("FOG")) {
             this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude() + 1, this.coordinates.getHeight());
             
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         //Height increase by 2 & Longitude increase by 10 when SUN
-        else if (weather == "SUN"){
+        else if (weather.equals("SUN")) {
             if (this.coordinates.getHeight() + 2 >= 100)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), 100);
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), this.coordinates.getHeight() + 2);
                 
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         //Height decrease by 7 when SNOW
-        else if (weather == "SNOW"){
+        else if (weather.equals("SNOW")) {
             //If the height is inferior or equal to 7, the JetPlane land.
             if (this.coordinates.getHeight() <= 7) {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
@@ -66,7 +68,7 @@ public class JetPlane extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 7);
             
             //DEBUG
-			System.out.println("TYPE#NAME(UID):" + weatherComm.get(weather));
+			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "):" + weatherComm.get(weather));
         }
         else
             System.out.println("INVALID");

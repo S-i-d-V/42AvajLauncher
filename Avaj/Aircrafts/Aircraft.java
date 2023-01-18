@@ -8,6 +8,7 @@ import Avaj.Coordinates;
 public abstract class Aircraft {
     protected       long        id;
     protected       String      name;
+    protected       String      type;
     protected       Coordinates coordinates;
     //Anytime an Aircraft is instancied, the next aircraft instancied will conserve the same idCounter
     private static  long        idCounter = 0;
@@ -23,5 +24,18 @@ public abstract class Aircraft {
     private long nextId() {
         idCounter += 1;
         return (idCounter);
+    }
+
+    //Getters
+    public String getName() {
+        return (this.name);
+    }
+
+    public String getType() {
+        return (this.type);
+    }
+
+    public long getId() {
+        return (this.id);
     }
 }

@@ -9,4 +9,11 @@ public interface Flyable {
     public void updateConditions();
 
     public void registerTower(WeatherTower weatherTower);
+
+    //Getters
+    public String getName();
+
+    public String getType();
+
+    public long getId();
 }
