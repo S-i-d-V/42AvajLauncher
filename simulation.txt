@@ -1,0 +1,15 @@
+Tower says: Baloon#B1(1) registered to weather tower.
+Tower says: JetPlane#J1(2) registered to weather tower.
+Tower says: Helicopter#H1(3) registered to weather tower.
+Baloon#B1(1): The meal will be soaked...
+JetPlane#J1(2): It's raining dayyyyyy !
+Helicopter#H1(3): My propeller protects us from the rain !
+Tower says: Baloon#B1(1) unregistered to weather tower.
+Baloon#B1(1): I feel my fingertips freezing.
+Helicopter#H1(3): My propeller protects us from the rain !
+JetPlane#J1(2): It's raining dayyyyyy !
+Helicopter#H1(3): My propeller protects us from the rain !
+JetPlane#J1(2): I can't even see the nose of the plane...
+Helicopter#H1(3): A good flight is like a good coffee. WARM !
+JetPlane#J1(2): I can't even see the nose of the plane...
+Helicopter#H1(3): Am I really flying in all this snow ?

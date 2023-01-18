@@ -3,6 +3,8 @@ package Avaj.Aircrafts;
 //Imports
 import Avaj.Coordinates;
 import Avaj.Tower.WeatherTower;
+import Avaj.Simulator.Logs;
+
 import java.util.HashMap;
 
 //This class inherits from the Aircraft class
@@ -36,6 +38,7 @@ public class JetPlane extends Aircraft implements Flyable {
             this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude() + 5, this.coordinates.getHeight());
         
             //DEBUG
+            Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
 			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         //Latitude increase by 1 when FOG
@@ -43,6 +46,7 @@ public class JetPlane extends Aircraft implements Flyable {
             this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude() + 1, this.coordinates.getHeight());
             
             //DEBUG
+            Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
 			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         //Height increase by 2 & Longitude increase by 10 when SUN
@@ -53,6 +57,7 @@ public class JetPlane extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), this.coordinates.getHeight() + 2);
                 
             //DEBUG
+            Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
 			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         //Height decrease by 7 when SNOW
@@ -67,6 +72,7 @@ public class JetPlane extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 7);
             
             //DEBUG
+            Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
 			System.out.println(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather));
         }
         else

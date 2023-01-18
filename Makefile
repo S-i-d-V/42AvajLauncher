@@ -8,6 +8,7 @@ SOURCES = Avaj/Aircrafts/Aircraft.java \
 		Avaj/Tower/WeatherTower.java \
 		Avaj/Simulator/ScenarioException.java \
 		Avaj/Simulator/Simulation.java \
+		Avaj/Simulator/Logs.java \
 		Avaj/Coordinates.java \
 		Avaj/WeatherProvider.java
 
@@ -20,5 +21,6 @@ clean:
 	find . -name "*.class" -type f -delete
 
 fclean: clean
+	rm -rf simulation.txt
 
 re: fclean all

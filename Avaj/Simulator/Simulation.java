@@ -1,5 +1,6 @@
 package Avaj.Simulator;
 
+import java.io.File;
 //Imports
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -93,8 +94,6 @@ public class Simulation {
     /*            Simulation methods               */
     /***********************************************/
 
-
-
     //Run the simulation
     public static void main(String[] args) throws ScenarioException {
         //Check args
@@ -106,6 +105,10 @@ public class Simulation {
         Iterator<String> it = lines.iterator();
         WeatherTower weatherTower = new WeatherTower();
         nbOfLoop = retrieveNbOfLoop(it.next());
+
+        //If simulation.txt already exist, i delete it
+        File file = new File("simulation.txt");
+        file.delete();
         
         //Parse every lines and fill the Flyable Array
         while (it.hasNext()) {
@@ -118,7 +121,7 @@ public class Simulation {
             }
         }
 
-        //Simulation
+        //Simulation finally run
         for (int i = 0; i < nbOfLoop; i++)
             weatherTower.changeWeather();
     }

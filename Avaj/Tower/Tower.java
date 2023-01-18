@@ -2,7 +2,9 @@ package Avaj.Tower;
 
 //Imports
 import java.util.ArrayList;
+
 import Avaj.Aircrafts.Flyable;
+import Avaj.Simulator.Logs;
 
 //No constructor in the UML Diagram means this class is abstract + she's designed to be extended
 //WeatherTower's parent class
@@ -15,6 +17,7 @@ public abstract class Tower {
 			this.observers.add(flyable);
 
 			//DEBUG
+			Logs.appendToLogFile("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " registered to weather tower.\n");
 			System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " registered to weather tower.");
 		}
 	}
@@ -26,6 +29,7 @@ public abstract class Tower {
 			this.observers.remove(indexToDel);
 
 			//DEBUG
+			Logs.appendToLogFile("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " unregistered to weather tower.\n");
 			System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " unregistered to weather tower.");
 		}
 	}
