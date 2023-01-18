@@ -34,6 +34,9 @@ public class WeatherProvider {
                 hash <<= 8;
                 hash |= (bytes[i] & 0xFF);
             }
+            if (hash < 0)
+                hash = hash * -1;
+
             return (this.weather[(int)(hash % 4) % 4]);
         }
         catch (NoSuchAlgorithmException e) {

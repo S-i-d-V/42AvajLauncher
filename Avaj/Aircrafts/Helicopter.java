@@ -28,7 +28,6 @@ public class Helicopter extends Aircraft implements Flyable {
 
     //Update the coordinates due to weather
     public void updateConditions() {
-        System.out.println("Function (Helicopter) updateCondition()");
         String weather = weatherTower.getWeather(this.coordinates);
 
         //Longitude increase by 5 when RAIN
@@ -61,7 +60,7 @@ public class Helicopter extends Aircraft implements Flyable {
             if (this.coordinates.getHeight() <= 12) {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
                 //Need to unregister from weatherTower
-                //Log current coordinates
+                this.unregisterTower(weatherTower);
             }
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 12);
@@ -74,9 +73,13 @@ public class Helicopter extends Aircraft implements Flyable {
     }
 
     //Regiser the Flyable to the WeatherTower
-    //Unregister from the current tower and register to the new one
     public void registerTower(WeatherTower weatherTower){
         this.weatherTower = weatherTower;
         this.weatherTower.register(this);
+    }
+
+    //Unregiser the Flyable to the WeatherTower
+    public void unregisterTower(WeatherTower weatherTower){
+        this.weatherTower.unregister(this);
     }
 }

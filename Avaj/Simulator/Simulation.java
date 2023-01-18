@@ -112,8 +112,10 @@ public class Simulation {
             String line = it.next();
 
             Flyable newAircraft = parseAircraftLine(line);
-            newAircraft.registerTower(weatherTower);
-            flyables.add(newAircraft);
+            if (newAircraft != null) {
+                newAircraft.registerTower(weatherTower);
+                flyables.add(newAircraft);
+            }
         }
 
         //Simulation

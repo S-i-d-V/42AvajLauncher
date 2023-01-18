@@ -11,14 +11,20 @@ public abstract class AircraftFactory {
         //Coordinates of the new Aircraft
         Coordinates coordinates = new Coordinates(longitude, latitude, height);
 
-        if (type == "Baloon")
+        //DEBUG
+        //System.out.println("AircraftFactory");
+        //System.out.println("type = " + type);
+        //System.out.println(type.equals("Baloon"));
+
+        if (type.equals("Baloon"))
             return (new Baloon(name, coordinates));
-        else if (type == "Helicopter")
+        else if (type.equals("Helicopter"))
             return (new Helicopter(name, coordinates));
-        else if (type == "JetPlane")
+        else if (type.equals("JetPlane"))
             return (new JetPlane(name, coordinates));
         //In case this method reutrn null, i have to throw an exception
-        else
+        else {
             return (null);
+        }
     }
 }
