@@ -15,10 +15,7 @@ public abstract class Tower {
 	public void register(Flyable flyable) {
 		if (!this.observers.contains(flyable)) {
 			this.observers.add(flyable);
-
-			//DEBUG
 			Logs.appendToLogFile("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " registered to weather tower.\n");
-			System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " registered to weather tower.");
 		}
 	}
 
@@ -27,10 +24,7 @@ public abstract class Tower {
 		int indexToDel = observers.indexOf(flyable);
 		if (indexToDel != -1){
 			this.observers.remove(indexToDel);
-
-			//DEBUG
 			Logs.appendToLogFile("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " unregistered to weather tower.\n");
-			System.out.println("Tower says: " + flyable.getType() + "#" + flyable.getName() + "(" + flyable.getId() + ")" + " unregistered to weather tower.");
 		}
 	}
 
