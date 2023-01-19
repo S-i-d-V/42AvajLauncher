@@ -57,6 +57,8 @@ public class JetPlane extends Aircraft implements Flyable {
             if (this.coordinates.getHeight() <= 7) {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
                 this.unregisterTower(weatherTower);
+                //Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
+                return;
             }
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 7);

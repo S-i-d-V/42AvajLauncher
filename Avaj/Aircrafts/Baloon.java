@@ -47,9 +47,13 @@ public class Baloon extends Aircraft implements Flyable {
             //If the height is inferior to 3, the Baloon land.
             if (this.coordinates.getHeight() < 3)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
-            else
+            else {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 3);
-            Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
+                this.unregisterTower(weatherTower);
+                //Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
+                return;
+            }
+                Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
         }
         //Height increase by 4 & Longitude increase by 2 when SUN
         else if (weather.equals("SUN")) {
@@ -65,6 +69,8 @@ public class Baloon extends Aircraft implements Flyable {
             if (this.coordinates.getHeight() <= 15) {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), 0);
                 this.unregisterTower(weatherTower);
+                //Logs.appendToLogFile(this.getType() + "#" + this.getName() + "(" + this.getId() + "): " + weatherComm.get(weather) + "\n");
+                return;
             }
             else
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 15);

@@ -18,8 +18,7 @@ public abstract class AircraftFactory {
         else if (type.equals("JetPlane"))
             return (new JetPlane(name, coordinates));
         //In case this method reutrn null, i have to throw an exception
-        else {
+        else
             return (null);
-        }
     }
 }
