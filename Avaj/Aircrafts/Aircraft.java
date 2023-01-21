@@ -38,4 +38,8 @@ public abstract class Aircraft {
     public long getId() {
         return (this.id);
     }
+
+    public String getFormattedLogName() {
+        return (this.getType() + "#" + this.getName() + "(" + this.getId() + ")");
+    }
 }

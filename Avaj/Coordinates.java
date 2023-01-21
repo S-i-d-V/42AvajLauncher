@@ -30,4 +30,8 @@ public class Coordinates {
 	public int getHeight() {
 		return (this.height);
 	}
+
+	public String getFormattedCoordinates() {
+		return (this.longitude + ", " + this.latitude);
+	}
 }
