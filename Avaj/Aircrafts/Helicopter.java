@@ -32,18 +32,14 @@ public class Helicopter extends Aircraft implements Flyable {
     //Update the coordinates due to weather
     public void updateConditions() {
         String weather = weatherTower.getWeather(this.coordinates);
-
-        //Longitude increase by 5 when RAIN
         if (weather.equals("RAIN")) {
             this.coordinates = new Coordinates(this.coordinates.getLongitude() + 5, this.coordinates.getLatitude(), this.coordinates.getHeight());
             Logs.appendToLogFile(this.getFormattedLogName() + ": " + weatherComm.get(weather) + "\n");
         }
-        //Longitude increase by 1 when FOG
         else if (weather.equals("FOG")) {
             this.coordinates = new Coordinates(this.coordinates.getLongitude() + 5, this.coordinates.getLatitude(), this.coordinates.getHeight());
             Logs.appendToLogFile(this.getFormattedLogName() + ": " + weatherComm.get(weather) + "\n");
         }
-        //Height increase by 2 & Longitude increase by 10 when SUN
         else if (weather.equals("SUN")) {
             if (this.coordinates.getHeight() + 2 >= 100)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), 100);
@@ -51,7 +47,6 @@ public class Helicopter extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 10, this.coordinates.getLatitude(), this.coordinates.getHeight() + 2);
             Logs.appendToLogFile(this.getFormattedLogName() + ": " + weatherComm.get(weather) + "\n");
         }
-        //Height decrease by 12 when SNOW
         else if (weather.equals("SNOW")) {
             //If the height is inferior or equal to 12, the Helicopter land.
             if (this.coordinates.getHeight() <= 12) {

@@ -32,8 +32,6 @@ public class Baloon extends Aircraft implements Flyable {
     //Update the coordinates due to weather
     public void updateConditions() {
         String weather = weatherTower.getWeather(this.coordinates);
-
-        //Height decrease by 5 when RAIN
         if (weather.equals("RAIN")) {
             //If the height is inferior to 5, the Baloon land.
             if (this.coordinates.getHeight() < 5)
@@ -42,7 +40,6 @@ public class Baloon extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude(), this.coordinates.getLatitude(), this.coordinates.getHeight() - 5);
             Logs.appendToLogFile(this.getFormattedLogName() + ": " + weatherComm.get(weather) + "\n");
         }
-        //Height decrease by 3 when FOG
         else if (weather.equals("FOG")) {
             //If the height is inferior to 3, the Baloon land.
             if (this.coordinates.getHeight() < 3)
@@ -55,7 +52,6 @@ public class Baloon extends Aircraft implements Flyable {
             }
             Logs.appendToLogFile(this.getFormattedLogName() + ": " + weatherComm.get(weather) + "\n");
         }
-        //Height increase by 4 & Longitude increase by 2 when SUN
         else if (weather.equals("SUN")) {
             if (this.coordinates.getHeight() + 4 >= 100)
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2, this.coordinates.getLatitude(), 100);
@@ -63,7 +59,6 @@ public class Baloon extends Aircraft implements Flyable {
                 this.coordinates = new Coordinates(this.coordinates.getLongitude() + 2, this.coordinates.getLatitude(), this.coordinates.getHeight() + 4);
             Logs.appendToLogFile(this.getFormattedLogName() + ": " + weatherComm.get(weather) + "\n");
         }
-        //Height decrease by 15 when SNOW
         else if (weather.equals("SNOW")) {
             //If the height is inferior or equal to 15, the Baloon land.
             if (this.coordinates.getHeight() <= 15) {

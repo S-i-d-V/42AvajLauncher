@@ -36,7 +36,7 @@ public class Simulation {
         }
         //If not throw an exception
         catch (Exception e) {
-            throw new ScenarioException("Failed to read file: " + path);
+            throw new ScenarioException("Failed to read file: " + path + ".");
         }
         return (lines);
     }
@@ -48,11 +48,11 @@ public class Simulation {
             nbOfLoop = Integer.parseInt(line);
             //Throw and error if the number is negative or 0
             if (nbOfLoop <= 0)
-                throw new ScenarioException("The first line should be a positive integer");
+                throw new ScenarioException("The first line should be a positive integer.");
         }
         catch (NumberFormatException e) {
             //Throw an error if the first line is not a number
-            throw new ScenarioException("The first line should be an integer");
+            throw new ScenarioException("The first line should be an integer.");
         }
 
         return (nbOfLoop);
@@ -62,13 +62,13 @@ public class Simulation {
         String[] lineTokens = line.split(" ");
         //Throw an error if the line dont respect the format TYPE NAME LONGITUDE LATITUDE HEIGHT
         if (lineTokens.length != 5)
-            throw new ScenarioException("Bad syntax: Respect this format: TYPE NAME LONGITUDE LATITUDE HEIGHT");
+            throw new ScenarioException("Bad syntax: Respect this format: TYPE NAME LONGITUDE LATITUDE HEIGHT.");
 
         //Retrieve the type of the Aircraft
         String type = lineTokens[0];
         //Throw error if the TYPE is not a Baloon, Helicopter or JetPlane.
         if (!(lineTokens[0].equals("Baloon") || lineTokens[0].equals("Helicopter") || lineTokens[0].equals("JetPlane")))
-            throw new ScenarioException("The Aircraft's type should be Baloon, Helicopter or JetPlane");
+            throw new ScenarioException("The Aircraft's type should be Baloon, Helicopter or JetPlane.");
         //Retrieve the name of the Aircraft
         String name = lineTokens[1];
         //Retrieve the coordinates of the Aircraft
@@ -79,34 +79,23 @@ public class Simulation {
             height = Integer. parseInt(lineTokens[4]);
             //Throw error if the coordinates are negatives
             if (longitude < 0 || latitude < 0 || height < 0)
-                throw new ScenarioException("LONGITUDE LATITUDE HEIGHT should be positive integers");
+                throw new ScenarioException("LONGITUDE LATITUDE HEIGHT should be positive integers.");
         }
         catch (NumberFormatException e) {
             //Throw error if the coordinates are not integers
-            throw new ScenarioException("LONGITUDE LATITUDE HEIGHT should be integers");
+            throw new ScenarioException("LONGITUDE LATITUDE HEIGHT should be integers.");
         }
         //Create a new Flyable and return it
-
         return (AircraftFactory.newAircraft(type, name, longitude, latitude, height));
     }
 
-    /***********************************************/
-    /*            Simulation methods               */
-    /***********************************************/
-
-    //Run the simulation
-    public static void main(String[] args) throws ScenarioException {
-        //Check args
-        if (args.length != 1)
-			return;
-
-        //Parse scenario and fill they Flyable Array
-        List<String> lines = readScenario(args[0]);
+    private static void parseScenario(String path, WeatherTower weatherTower) throws ScenarioException{
+        //Retrieve the scenario in a List.
+        List<String> lines = readScenario(path);
         Iterator<String> it = lines.iterator();
-        WeatherTower weatherTower = new WeatherTower();
         nbOfLoop = retrieveNbOfLoop(it.next());
 
-        //If simulation.txt already exist, i delete it
+        //Create the File simulation.txt and delete it if already exists.
         File file = new File("simulation.txt");
         file.delete();
         
@@ -120,9 +109,28 @@ public class Simulation {
                 flyables.add(newAircraft);
             }
         }
+    }
 
-        //Simulation finally run
-        for (int i = 0; i < nbOfLoop; i++)
-            weatherTower.applyWeatherChange();
+    /***********************************************/
+    /*            Simulation methods               */
+    /***********************************************/
+
+    //Run the simulation
+    public static void main(String[] args) throws ScenarioException {
+        //Check args
+        if (args.length != 1)
+			return;
+
+        try {
+            WeatherTower weatherTower = new WeatherTower();
+            parseScenario(args[0], weatherTower);
+            //Simulation running in this loop
+            for (int i = 0; i < nbOfLoop; i++)
+                weatherTower.applyWeatherChange();
+            System.out.println("\u001B[32mSimulation successfully generated.\u001B[0m");
+        }
+        catch (ScenarioException e) {
+            System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m");
+        }
     }
 }
