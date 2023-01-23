@@ -23,17 +23,13 @@ SOURCES = Avaj/Aircrafts/Aircraft.java \
 OBJECTS = $(SOURCES:.java=.class)
 
 #RULES
-.PHONY: all compile run clean fclean re
+.PHONY: all clean fclean re
 
-compile: $(SOURCES)
+all:
 	echo "$(YELLOW)Compiling binary files from java files..$(CLEAR)"
 	javac $(SOURCES)
-
-run: $(OBJECTS)
 	echo "$(GREEN)Executing Avaj-Launcher..$(CLEAR)"
 	java Avaj.Simulator.Simulation scenario.txt
-
-all: compile run
 
 clean:
 	echo "$(RED)Cleaning binary files..$(CLEAR)"

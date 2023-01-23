@@ -117,18 +117,17 @@ public class Simulation {
 
     //Run the simulation
     public static void main(String[] args) throws ScenarioException {
-        //Check args
         if (args.length != 1)
 			return;
-
         try {
             WeatherTower weatherTower = new WeatherTower();
+
             parseScenario(args[0], weatherTower);
-            //Simulation running in this loop
             for (int i = 0; i < nbOfLoop; i++)
                 weatherTower.applyWeatherChange();
             System.out.println("\u001B[32mSimulation successfully generated.\u001B[0m");
         }
+        //Catch every scenarioExceptions that occurs
         catch (ScenarioException e) {
             System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m");
         }
