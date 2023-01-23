@@ -123,6 +123,6 @@ public class Simulation {
 
         //Simulation finally run
         for (int i = 0; i < nbOfLoop; i++)
-            weatherTower.changeWeather();
+            weatherTower.applyWeatherChange();
     }
 }

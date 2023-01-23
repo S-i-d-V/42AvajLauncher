@@ -11,9 +11,14 @@ public class WeatherTower extends Tower {
 		return (WeatherProvider.getProvider().getCurrentWeather(coordinates));
 	}
 
-    //This method should be private according to the UML Diagram, but it is not possible.
 	//Change the weather for every Flyable in the Flyables's list contained in the tower class.
-	public void changeWeather() {
+	private void changeWeather() {
 		this.conditionsChanged();
+	}
+
+	//In the UML Diagram, the changeWeather() method is private, should be public
+	//But in doubt, i will use this public method to call the private one.
+	public void applyWeatherChange() {
+		this.changeWeather();
 	}
 }
